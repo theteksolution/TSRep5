@@ -133,32 +133,39 @@
     //
     // Purchase Controller
     //
-    .controller("purchaseCtrl", function ($scope, $http, purchasesService, $modal) {
+    .controller("purchaseCtrl", function ($scope, $http, purchasesService, locationsService, $modal) {
 
       
-        $http.get("api/Purchase")
-            .success(function (response) {
-                $scope.Customers = response.SelectItemsVMList;
-                $scope.formData.CustomerID = '0';
-            })
-            .error(function (data, status, headers, config) {
-                alert('here');
-            });
+        var purchaseDetails = this;
 
-        $http.get("api/Location")
-           .success(function (response) {
-               $scope.Locations = response.SelectItemsVMList;
-               $scope.formData.LocationID = '0';
-               console.log($scope.SelectItemsVMList);
-           })
-           .error(function (data, status, headers, config) {
-               alert('here');
-           });
+        purchaseDetails.GetCustomerList = function (CustomerID) {
+            purchasesService.getCustomersList()
+               .then(function (result) {
+                   $scope.Customers = result.SelectItemsVMList;
+                   $scope.formData.CustomerID = CustomerID;
+               });
+        };
+
+        purchaseDetails.LoadLocationsList = function (LocationID) {
+            locationsService.getLocationsList()
+               .then(function (result) {
+                   $scope.Locations = result.SelectItemsVMList;
+                   $scope.formData.LocationID = LocationID;
+               });
+        };
+
+        purchaseDetails.GetCustomerList('0');
+
+        purchaseDetails.LoadLocationsList('0');
 
         $scope.closeAlert = function () {
             $scope.isCollapsed = true;
         };
-       
+        $scope.openAlert = function () {
+            $scope.isCollapsed = false;
+        };
+
+
         $scope.getCustomerDetailInfo = function () {
            
             purchasesService.getCustomerPurchaseInfo($scope.formData.CustomerID)
@@ -181,17 +188,15 @@
         $scope.formData = {};
         $scope.processForm = function (isValid) {
 
-            console.log(isValid);
             var data = $scope.formData;
 
-            $http.post('api/Purchase', data)
-            .success(function (data) {
-                console.log('postin');
-                console.log(data);
-                $scope.isCollapsed = false;
-                $scope.formData.Amount = null;
-                $scope.Balance = data;
-            });
+           purchasesService.updatePurchase(data)
+          .then(function (response) {
+              $scope.isCollapsed = false;
+              $scope.formData.Amount = null;
+              $scope.Balance = response;
+              $scope.userForm.$setPristine();
+          });
         };
     })
 

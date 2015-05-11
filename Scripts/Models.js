@@ -60,6 +60,23 @@
     //
     .service("purchasesService", function ($http) {
 
+        this.getLocationsList = function () {
+            return $http.get("api/Location")
+            .then(function (result) {
+                return result.data;
+            }
+            )
+        };
+
+        this.getCustomersList = function () {
+            return $http.get("api/Purchase")
+                .then(
+                    function (result) {
+                        return result.data;
+                    }
+                )
+        };
+
         this.getCustomerPurchaseInfo = function (CustomerID) {
             
             return $http.get("api/Purchase", { params: { id: CustomerID } })
@@ -67,6 +84,14 @@
                     return result.data;
                     }
                 )
+        };
+
+        this.updatePurchase = function (data) {
+
+            return $http.post('api/Purchase', data)
+            .then(function (data) {
+                return data.data;
+           });
         };
 
     })
