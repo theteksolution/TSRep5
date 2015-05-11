@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EarthSkyTimeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EarthSkyTimeEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="EarthSkyTimeModel.Customer" />
+    <EntitySet Name="CustomerBalances" EntityType="EarthSkyTimeModel.CustomerBalance" />
+    <EntitySet Name="Locations" EntityType="EarthSkyTimeModel.Location" />
+    <EntitySet Name="Transactions" EntityType="EarthSkyTimeModel.Transaction" />
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Street1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Street2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CustomerBalance">
+    <Key>
+      <PropertyRef Name="CustomerBalanceID" />
+    </Key>
+    <Property Name="CustomerBalanceID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+    <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Street1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Street2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="Note" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+</Schema>

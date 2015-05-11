@@ -1,0 +1,12 @@
+﻿<select ng-model="formData.LocationID"  
+    ng-change="getLocationInfo()" 
+    class="form-control" 
+    ng-options="location.Value as location.Text for location in Locations ">
+    
+</select>
+
+<!--<option ng-repeat="location in Locations"  
+                    value="{{location.Value}}">{{location.Text}}</option> 
+    
+    
+    -->

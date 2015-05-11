@@ -1,0 +1,63 @@
+﻿<br />
+    <h2>Transactions</h2><br />
+
+<div ng-controller="transactionsCtrl">
+
+<br />  
+    <div class="form-group">
+    <label for="dtFrom">Filter Date From [optional]</label>
+         <input type="text" id="dtFrom" class="form-control" 
+          datepicker-popup="dd-MMMM-yyyy" 
+          ng-model="dtFrom" is-open="openedFrom" 
+          min-date="minDate" 
+          datepicker-options="dateOptions" 
+          close-text="Close" 
+          ng-click="openFrom($event)"
+          readonly my-date
+             />
+  </div>
+  <div class="form-group">
+    <label for="dtTo">Filter Date To [optional]</label>
+      <input type="text" id="dtTo" class="form-control" 
+          datepicker-popup="dd-MMMM-yyyy" 
+          ng-model="dtTo" is-open="openedTo" 
+          min-date="minDate" 
+          datepicker-options="dateOptions" 
+          close-text="Close" 
+          ng-click="openTo($event)"
+          readonly my-date/>
+             
+  </div>
+   <div class="form-group">
+    <label for="location">Location [optional]</label>
+    <div locations-select-list></div>  
+  </div>
+      <br />
+    
+   <input  class="btn btn-primary"  type="submit" value="Reload" ng-click="getTransactions()"/>      
+    <input type="button"  class="btn btn-primary" value="Export Transactions" id="btnExport" /><br />
+   <br />
+
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Updated</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+         <tr ng-repeat="transaction in Transactions">
+            <td> {{ transaction.Name }} </td>
+            <td> {{ transaction.Amount | currency }} </td>
+            <td> {{ transaction.DateUpdated | date:'MM/dd/yyyy'}}</td>
+            <td> {{ transaction.Location }} </td>
+           
+         </tr>  
+    </tbody>
+  </table>
+    
+
+</div>
+

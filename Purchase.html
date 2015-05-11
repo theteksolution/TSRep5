@@ -1,0 +1,46 @@
+﻿
+    
+ <div ng-controller="purchaseCtrl" >
+    <form name="userForm"  novalidate> 
+ <div class="form-group">        
+    <br />
+    <h2>Purchase</h2><br />
+   <alert type="success" close="closeAlert()" ng-init="isCollapsed = true" ng-hide="isCollapsed"><strong>Success!</strong> Purchase updated successfully.</alert>
+   <div>
+       <div customer-select-list></div>      
+        
+   </div>  
+    <br /><br />
+
+      <address>
+  <strong> {{FirstName }}&nbsp;{{ LastName }}</strong><br />
+  {{ Street1 }}&nbsp;{{Street2}} <br />
+   {{City}}&nbsp;{{State}}&nbsp;{{Zip}}<br />
+{{Email}}&nbsp; {{ Phone}}<br />
+  <strong>{{ Balance | currency }} </strong>
+</address>
+<select class="form-control" id="purchaseType" name="purchaseType">
+    <option selected="selected">Purchase</option>
+    <option>Credit</option>
+</select>
+<br />    
+<div class="form-inline">
+ <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group" ng-class="{ 'has-error' : userForm.inputAmount.$invalid && !userForm.inputAmount.$pristine }">
+      <div class="input-group-addon">$</div>
+      <input class="form-control" id="inputAmount" name="inputAmount" placeholder="Enter New Amount" ng-model="formData.Amount" numbers-only="numbers-only" required />
+     <div class="input-group-addon">.00</div>
+    </div>
+    <p ng-show="userForm.inputAmount.$invalid && !userForm.inputAmount.$pristine" class="help-block">The amount is required.</p>
+  </div>
+  </div> 
+<br />    
+  <div locations-select-list></div> 
+  <br />
+     <!-- -->
+     <button type="submit" class="btn btn-primary" confirm="Are you sure" ng-disabled="userForm.$invalid" ng-click="processForm(userForm.$valid)">Enter Amount</button>
+</div> 
+    </form>
+</div>
+ 

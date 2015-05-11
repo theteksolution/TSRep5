@@ -1,0 +1,41 @@
+﻿
+    <br />
+    <h2>Locations</h2><br />
+
+<div ng-controller="locationsCtrl">     
+    <div class="form-group"> 
+        <alert type="success" close="closeAlert()" ng-init="isCollapsed = true" ng-hide="isCollapsed"><strong>Success!</strong> Location updated successfully.</alert>
+    
+    </div>    
+    <div locations-select-list></div>  
+    <br /><br />
+
+    <div class="form-group">
+    <label for="locationName">Location Name</label>
+    <input type="text" class="form-control" id="locationName" name="locationName" placeholder="Location Name" ng-model="formData.LocationName"  />
+</div>
+<div class="form-group">
+    <label for="street1">Street1</label>
+    <input type="text" class="form-control" id="street1" name="street1" placeholder="Street1"  ng-model="formData.Street1" />
+  </div>
+  <div class="form-group">
+    <label for="street2">Street2</label>
+    <input type="text" class="form-control" id="street2" name="street2" placeholder="Street2"  ng-model="formData.Street2" />
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" name="city" placeholder="City"  ng-model="formData.City" />
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <input type="text" class="form-control" id="state" name="state" placeholder="State"  ng-model="formData.State"  maxlength="2"/>
+  </div>
+  <div class="form-group">
+    <label for="zip">Zip</label>
+    <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip"  ng-model="formData.Zip" />
+  </div>
+    
+ <input class="btn btn-primary" type="submit" value="Update"  confirm="Update This Location?" ng-click="processForm()" />
+  <a href="#" class="btn btn-primary" id="btnReset">Cancel</a>  
+        </div>
+</div>  

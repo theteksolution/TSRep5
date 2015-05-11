@@ -1,0 +1,15 @@
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\LedgerAng.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\LedgerAng.pdb
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\Newtonsoft.Json.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\System.Net.Http.Formatting.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\System.Web.Http.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\System.Web.Http.WebHost.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\Newtonsoft.Json.xml
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\System.Net.Http.Formatting.xml
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\System.Web.Http.xml
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\System.Web.Http.WebHost.xml
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\obj\Debug\LedgerAng.csprojResolveAssemblyReference.cache
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\obj\Debug\LedgerAng.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\obj\Debug\LedgerAng.pdb
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\EntityFramework.dll
+C:\Users\lrich\Dropbox\LedgerAng\LedgerAng\LedgerAng\bin\EntityFramework.xml
