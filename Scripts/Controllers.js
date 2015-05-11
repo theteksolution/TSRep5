@@ -1,6 +1,7 @@
 ﻿angular.module('Controllers', ['ui.bootstrap'])
 
     //
+    //
     // Main Controller
     //
     .controller("mainCtrl", function ($scope) {
@@ -8,6 +9,7 @@
     })
 
 
+    //
     //
     // Balances Controller
     //
@@ -26,9 +28,10 @@
 
 
     //
+    //
     // Customer Details Controller
     //
-    .controller("customerDetailCtrl", function ($scope, $http, customerDetailsService) {
+    .controller("customerDetailCtrl", function ($scope, customerDetailsService) {
 
         var customerDetails = this;
 
@@ -79,9 +82,10 @@
 
 
     //
+    //
     // Locations Controller
     //
-    .controller("locationsCtrl", function ($scope, $http, locationsService) {
+    .controller("locationsCtrl", function ($scope, locationsService) {
 
         var locations = this;
 
@@ -100,10 +104,7 @@
         $scope.closeAlert = function () {
             $scope.isCollapsed = true;
         };
-        $scope.openAlert = function () {
-            $scope.isCollapsed = false;
-        };
-
+       
         $scope.getLocationInfo = function () {
             locationsService.getLocationInformation($scope.formData.LocationID)
              .then(function (response) {
@@ -131,9 +132,10 @@
 
 
     //
+    //
     // Purchase Controller
     //
-    .controller("purchaseCtrl", function ($scope, $http, purchasesService, locationsService, $modal) {
+    .controller("purchaseCtrl", function ($scope, purchasesService, locationsService, $modal) {
 
       
         var purchaseDetails = this;
@@ -161,11 +163,7 @@
         $scope.closeAlert = function () {
             $scope.isCollapsed = true;
         };
-        $scope.openAlert = function () {
-            $scope.isCollapsed = false;
-        };
-
-
+       
         $scope.getCustomerDetailInfo = function () {
            
             purchasesService.getCustomerPurchaseInfo($scope.formData.CustomerID)
@@ -202,34 +200,33 @@
 
 
     //
+    //
     // Transaction Controller
-    .controller("transactionsCtrl", function ($scope, $http) {
+    //
+    .controller("transactionsCtrl", function ($scope, transactionsService, locationsService) {
 
+        var transactions = this;
 
-        $http.get("api/Location")
-          .success(function (response) {
-              $scope.Locations = response.SelectItemsVMList;
-              $scope.formData.LocationID = 0;
-              console.log($scope.SelectItemsVMList);
-          })
-          .error(function (data, status, headers, config) {
-              alert('here');
-          });
+        transactions.LoadLocationsList = function () {
+            locationsService.getLocationsList()
+               .then(function (result) {
+                   $scope.Locations = result.SelectItemsVMList;
+                   $scope.formData.LocationID = '0';
+               });
+        };
 
         $scope.formData = {};
         $scope.getTransactions = function () {
 
-            $http.get("api/GetCustomerTransactions/" + $scope.dtTo + "/" + $scope.dtFrom + "/" + $scope.formData.LocationID)
-                .success(function (response) {
-                    $scope.Transactions = response.CustomerTransactionList;
-                })
-                .error(function (data, status, headers, config) {
-                    alert('here');
+            transactionsService.getTransactions($scope.dtTo, $scope.dtFrom, $scope.formData.LocationID)
+                .then(function (result) {
+                    $scope.Transactions = result.CustomerTransactionList;
                 });
         };
 
        
         $scope.getTransactions();
+        transactions.LoadLocationsList();
 
 
         /*

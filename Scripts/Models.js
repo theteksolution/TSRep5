@@ -123,4 +123,22 @@
                 });
         };
 
+    })
+    .service("transactionsService", function ($http) {
+
+
+        this.getLocationsList = function () {
+            return $http.get("api/Location")
+            .then(function (result) {
+                return result.data;
+            })
+        };
+
+        this.getTransactions = function (dtTo, dtFrom, LocationID) {
+            return $http.get("api/GetCustomerTransactions/" + dtTo + "/" + dtFrom + "/" + LocationID)
+               .then(function (response) {
+                   return response.data;
+            })
+        };
+
     });
